@@ -253,6 +253,52 @@
      background:#0A66C2;
     }
 
+    .servicios{
+     display:grid;
+     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+     gap:20px;
+    }
+
+    .servicio{
+     background:white;
+     padding:25px;
+     border-radius:15px;
+     text-align:center;
+     box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .formulario{
+     background:white;
+     padding:30px;
+     border-radius:15px;
+     box-shadow:0 4px 12px rgba(0,0,0,0.12);
+     margin-top:30px;
+    }
+
+    .formulario input,
+    .formulario textarea{
+     width:100%;
+     padding:12px;
+     margin:10px 0;
+     border:1px solid #ccc;
+     border-radius:8px;
+     font-size:16px;
+    }
+
+    .formulario button{
+     background:#2d6a4f;
+     color:white;
+     border:none;
+     padding:12px 24px;
+     border-radius:8px;
+     font-size:16px;
+     cursor:pointer;
+    }
+
+   .formulario button:hover{
+     background:#1b4332;
+    }
+
     footer{
      background:#1b4332;
      color:white;
@@ -281,6 +327,7 @@
   <a href="#investigacion">Investigación</a>
   <a href="#noticias">Noticias</a>
   <a href="#contacto">Contacto</a>
+  <a href="#consultoria">Consultoría</a>
 </nav>
 
 <section id="sobre">
@@ -376,6 +423,42 @@
       de ecología tropical y monitoreo ambiental.
     </p>
   </div>
+  </div>
+</section>
+
+<section id="consultoria">
+  <h2>Consultoría Académica</h2>
+
+  <div class="servicios">
+    <div class="servicio">
+      <h3>Asesoría de tesis</h3>
+      <p>Orientación metodológica para pregrado y maestría.</p>
+    </div>
+
+    <div class="servicio">
+      <h3>Análisis de datos</h3>
+      <p>Procesamiento estadístico aplicado a investigación científica.</p>
+    </div>
+
+    <div class="servicio">
+      <h3>Redacción científica</h3>
+      <p>Corrección técnica y estructuración de manuscritos.</p>
+    </div>
+
+    <div class="servicio">
+      <h3>Diseño metodológico</h3>
+      <p>Construcción de proyectos de investigación sólidos.</p>
+    </div>
+  </div>
+
+  <div class="formulario">
+    <h3>Solicite información</h3>
+    <form action="https://formspree.io/f/xkokyrge" method="POST">
+      <input type="text" name="nombre" placeholder="Nombre completo" required>
+      <input type="email" name="email" placeholder="Correo electrónico" required>
+      <textarea name="mensaje" rows="5" placeholder="Escriba su consulta" required></textarea>
+      <button type="submit">Enviar consulta</button>
+    </form>
   </div>
 </section>
 
