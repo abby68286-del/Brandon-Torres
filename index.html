@@ -267,6 +267,38 @@
      box-shadow:0 4px 12px rgba(0,0,0,0.1);
     }
 
+    .detalle{
+     display:none;
+     margin-top:15px;
+    }
+
+    .detalle img{
+     width:100%;
+     margin-top:15px;
+     border-radius:12px;
+    }
+
+    .galeria{
+     display:grid;
+     grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+     gap:15px;
+     margin-top:15px;
+    }
+
+    .galeria img{
+     width:100%;
+     border-radius:12px;
+     object-fit:cover;
+    }  
+
+    .servicio.activo .detalle{
+     display:block;
+    }
+
+    .detalle{
+     display:none;
+    }
+
     .formulario{
      background:white;
      padding:30px;
@@ -425,30 +457,49 @@
   </div>
   </div>
 </section>
-
+ 
 <section id="consultoria">
   <h2>Consultoría Académica</h2>
 
   <div class="servicios">
-    <div class="servicio">
+
+    <div class="servicio" onclick="toggleServicio(this)">
       <h3>Asesoría de tesis</h3>
-      <p>Orientación metodológica para pregrado y maestría.</p>
+      <div class="detalle">
+        <p>Orientación metodológica para tesis de pregrado, maestría y doctorado.</p>
+        <div class="galeria">
+          <img src="Imagenes/consultoria/Tesista1.jpg" alt="Asesoría de tesis">
+          <img src="Imagenes/consultoria/Tesista2.png" alt="Asesoría de tesis">
+          <img src="Imagenes/consultoria/Tesista3.png" alt="Asesoría de tesis">
+          <img src="Imagenes/consultoria/Tesista4.png" alt="Asesoría de tesis">
+        </div>
+      </div>
     </div>
 
-    <div class="servicio">
+    <div class="servicio" onclick="toggleServicio(this)">
       <h3>Análisis de datos</h3>
-      <p>Procesamiento estadístico aplicado a investigación científica.</p>
+      <div class="detalle">
+        <p>Procesamiento estadístico de datos ecológicos mediante software especializado.</p>
+        <img src="Imagenes/consultoria/Analisis1.png" alt="Análisis de datos">
+      </div>
     </div>
 
-    <div class="servicio">
+    <div class="servicio" onclick="toggleServicio(this)">
       <h3>Redacción científica</h3>
-      <p>Corrección técnica y estructuración de manuscritos.</p>
+      <div class="detalle">
+        <p>Corrección y estructuración profesional de artículos, tesis e informes científicos.</p>
+        <img src="Imagenes/consultoria/Redacción1.png" alt="Redacción científica">
+      </div>
     </div>
 
-    <div class="servicio">
+    <div class="servicio" onclick="toggleServicio(this)">
       <h3>Diseño metodológico</h3>
-      <p>Construcción de proyectos de investigación sólidos.</p>
+      <div class="detalle">
+        <p>Construcción de diseños experimentales sólidos para investigaciones académicas.</p>
+        <img src="Imagenes/consultoria/Diseño1.png" alt="Diseño metodológico">
+      </div>
     </div>
+
   </div>
 
   <div class="formulario">
@@ -493,6 +544,20 @@
   <p>Ecología Tropical • Investigación • Docencia • Conservación</p>
   <p>© 2026 Todos los derechos reservados</p>
 </footer>
+
+<script>
+function toggleServicio(elemento){
+  const servicios = document.querySelectorAll('.servicio');
+
+  servicios.forEach(function(servicio){
+    if(servicio !== elemento){
+      servicio.classList.remove('activo');
+    }
+  });
+
+  elemento.classList.toggle('activo');
+}
+</script>
 
 </body>
 </html>
