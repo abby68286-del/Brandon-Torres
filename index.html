@@ -155,6 +155,41 @@
      font-size:18px;
     }
 
+    .estado{
+     display:inline-block;
+     margin-top:15px;
+     padding:8px 14px;
+     background:#d8f3dc;
+     color:#1b4332;
+     border-radius:20px;
+     font-weight:bold;
+     font-size:14px;
+    }
+
+    .noticias{
+     display:grid;
+     gap:25px;
+    }
+
+    .noticia{
+     background:white;
+     padding:25px;
+     border-left:6px solid #2d6a4f;
+     border-radius:12px;
+     box-shadow:0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    .noticia h3{
+     margin-top:0;
+     color:#2d6a4f;
+    }
+
+    .fecha{
+     font-size:14px;
+     color:#666;
+     margin-bottom:10px;
+    }
+
     footer{
       background:#1b4332;
       color:white;
@@ -175,6 +210,7 @@
   <a href="#sobre">Sobre mí</a>
   <a href="#libros">Libros</a>
   <a href="#investigacion">Investigación</a>
+  <a href="#noticias">Noticias</a>
   <a href="#contacto">Contacto</a>
 </nav>
 
@@ -197,7 +233,8 @@
       <img src="Imagenes/Ecodística.png" alt="Ecodística">
       <div class="libro-contenido">
         <h3>Ecodística</h3>
-        <p>Estadística aplicada a la ecología para investigación científica.</p>
+        <p>Estadística aplicada a la ecología actualmente en proceso editorial.</p>
+        <span class="estado">Próximamente en Amazon</span>
       </div>
     </div>
 
@@ -205,7 +242,8 @@
       <img src="Imagenes/Manual.jpg" alt="Manual">
       <div class="libro-contenido">
         <h3>Manual de remediación</h3>
-        <p>Procedimientos técnicos para parcelas permanentes de muestreo.</p>
+        <p>Procedimientos técnicos para parcelas permanentes de muestreo en proceso de obtención de ISBN.</p>
+        <span class="estado">Próximamente en Amazon</span>
       </div>
     </div>
 
@@ -214,6 +252,7 @@
       <div class="libro-contenido">
         <h3>Thriller Psicológico</h3>
         <p>Novela de venganza psicológica actualmente en proceso editorial.</p>
+        <span class="estado">Próximamente en Amazon</span>
       </div>
     </div>
 
@@ -245,6 +284,29 @@
       <p>Formación académica en biología, ecología forestal y estadística.</p>
     </div>
 
+  </div>
+</section>
+
+<section id="noticias">
+  <h2>Noticias y Reflexiones Ambientales</h2>
+  <div class="noticias">
+    <div class="noticia">
+    <div class="fecha">Abril 2026</div>
+    <h3>Importancia de los bosques inundables amazónicos</h3>
+    <p>
+      Los bosques inundables cumplen funciones esenciales en la regulación hídrica,
+      conservación de biodiversidad y captura de carbono en la Amazonía peruana.
+    </p>
+  </div>
+
+    <div class="noticia">
+    <div class="fecha">Abril 2026</div>
+    <h3>La estadística en la investigación ecológica moderna</h3>
+    <p>
+      El análisis estadístico adecuado fortalece la validez científica en estudios
+      de ecología tropical y monitoreo ambiental.
+    </p>
+  </div>
   </div>
 </section>
 
