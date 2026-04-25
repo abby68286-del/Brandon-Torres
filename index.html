@@ -9,7 +9,7 @@
     body{
       margin:0;
       font-family: Arial, sans-serif;
-      background:#f4f8f2;
+      background: linear-gradient(to bottom, #f4f8f2, #eef6f0);
       color:#1b4332;
     }
 
@@ -253,25 +253,15 @@
      background:#0A66C2;
     }
 
-    .servicios{
-     display:grid;
-     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-     gap:20px;
-    }
-
     .servicio{
      background:white;
      padding:25px;
      border-radius:15px;
      text-align:center;
      box-shadow:0 4px 12px rgba(0,0,0,0.1);
+     cursor: pointer;
     }
-
-    .detalle{
-     display:none;
-     margin-top:15px;
-    }
-
+    
     .detalle img{
      width:100%;
      margin-top:15px;
@@ -291,12 +281,22 @@
      object-fit:cover;
     }  
 
-    .servicio.activo .detalle{
-     display:block;
+    .detalle{
+     max-height: 0;
+     overflow: hidden;
+     opacity: 0;
+     transition: all 0.4s ease;
     }
 
-    .detalle{
-     display:none;
+    .servicio.activo .detalle{
+     max-height: 800px;
+     opacity: 1;
+    }
+
+    .servicios{
+     display:grid;
+     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+     gap:20px;
     }
 
     .formulario{
@@ -338,20 +338,59 @@
      left:0;
      width:100%;
      height:100%;
-     background:rgba(0,0,0,0.85);
+     background:rgba(0,0,0,0.9);
      justify-content:center;
      align-items:center;
      z-index:2000;
+     animation:fadeIn 0.3s ease;
     }
 
     .visor img{
-     max-width:90%;
+     max-width:85%;
      max-height:85%;
-     border-radius:15px;
-     box-shadow:0 8px 30px rgba(0,0,0,0.5);
-     background:white;
-     padding:8px;
+     border-radius:12px;
+     box-shadow:0 10px 40px rgba(0,0,0,0.6);
+     transform:scale(0.8);
+     animation:zoomIn 0.3s ease forwards;
+    }
+
+    @keyframes fadeIn{
+     from{opacity:0;}
+     to{opacity:1;}
+    }
+
+    @keyframes zoomIn{
+     to{transform:scale(1);}
+    }
+
+    .cerrar{
+     position:absolute;
+     top:20px;
+     right:30px;
+     font-size:40px;
+     color:white;
      cursor:pointer;
+     font-weight:bold;
+    }
+
+    .prev, .next{
+     position:absolute;
+     top:50%;
+     transform:translateY(-50%);
+     background:rgba(255,255,255,0.15);
+     border:none;
+     color:white;
+     font-size:30px;
+     padding:10px 15px;
+     cursor:pointer;
+     border-radius:8px;
+    }
+
+    .prev{ left:20px; }
+    .next{ right:20px; }
+
+    .prev:hover, .next:hover{
+     background:rgba(255,255,255,0.3);
     }
 
     .galeria img,
@@ -378,7 +417,7 @@
 <header class="hero">
   <img src="Imagenes/Perfil.png.png" alt="Brandon Torres" class="perfil">
   <h1>Brandon Torres</h1>
-  <p>Ecólogo Tropical • Investigador • Docente Universitario • Escritor</p>
+  <p>Ecólogo Tropical • Investigador • Docente • Escritor</p>
 </header>
 
 <nav>
@@ -395,7 +434,7 @@
   <div class="card">
     <p>
       Ingeniero en Ecología de Bosques Tropicales, Magíster en Gestión Ambiental y doctorando en Ambiente y Desarrollo Sostenible. 
-      Docente universitario e investigador especializado en ecología amazónica.
+      Docente e investigador de la Facultad de Ciencias Forestales en la Universidad Nacional de la Amazonía Peruana.
     </p>
   </div>
 </section>
@@ -496,10 +535,10 @@
       <div class="detalle">
         <p>Orientación metodológica para tesis de pregrado, maestría y doctorado.</p>
         <div class="galeria">
-          <img src="Imagenes/consultoria/Tesista1.jpg" alt="Asesoría de tesis" onclick="abrirImagen(this.src)">
-          <img src="Imagenes/consultoria/Tesista2.png" alt="Asesoría de tesis" onclick="abrirImagen(this.src)">
-          <img src="Imagenes/consultoria/Tesista3.png" alt="Asesoría de tesis" onclick="abrirImagen(this.src)">
-          <img src="Imagenes/consultoria/Tesista4.png" alt="Asesoría de tesis" onclick="abrirImagen(this.src)">
+          <img src="Imagenes/consultoria/Tesista1.jpg" onclick="abrirGaleria(this)">
+          <img src="Imagenes/consultoria/Tesista2.jpg" onclick="abrirGaleria(this)">
+          <img src="Imagenes/consultoria/Tesista3.jpg" onclick="abrirGaleria(this)">
+          <img src="Imagenes/consultoria/Tesista4.jpg" onclick="abrirGaleria(this)">
         </div>
       </div>
     </div>
@@ -507,24 +546,34 @@
     <div class="servicio" onclick="toggleServicio(this)">
       <h3>Análisis de datos</h3>
       <div class="detalle">
-        <p>Procesamiento estadístico de datos ecológicos mediante software especializado.</p>
-        <img src="Imagenes/consultoria/Analisis1.png" alt="Análisis de datos" onclick="abrirImagen(this.src)">
+        <p>Procesamiento estadístico de datos ecológicos.</p>
+        <div class="galeria">
+          <img src="Imagenes/consultoria/Analisis1.png" onclick="abrirGaleria(this)">
+          <img src="Imagenes/consultoria/Analisis2.jpg" onclick="abrirGaleria(this)">
+          <img src="Imagenes/consultoria/Analisis3.jpg" onclick="abrirGaleria(this)">
+          <img src="Imagenes/consultoria/Analisis4.jpg" onclick="abrirGaleria(this)">
+        </div>
       </div>
     </div>
 
     <div class="servicio" onclick="toggleServicio(this)">
       <h3>Redacción científica</h3>
       <div class="detalle">
-        <p>Corrección y estructuración profesional de artículos, tesis e informes científicos.</p>
-        <img src="Imagenes/consultoria/Redacción1.png" alt="Redacción científica" onclick="abrirImagen(this.src)">
+        <p>Corrección y estructuración científica.</p>
+        <img src="Imagenes/consultoria/Redaccion1.png" onclick="abrirGaleria(this)">
       </div>
     </div>
 
     <div class="servicio" onclick="toggleServicio(this)">
       <h3>Diseño metodológico</h3>
       <div class="detalle">
-        <p>Construcción de diseños experimentales sólidos para investigaciones académicas.</p>
-        <img src="Imagenes/consultoria/Diseño1.png" alt="Diseño metodológico">
+        <p>Diseños experimentales sólidos.</p>
+        <div class="galeria">
+          <img src="Imagenes/consultoria/Diseno1.png" onclick="abrirGaleria(this)">
+          <img src="Imagenes/consultoria/Diseno2.png" onclick="abrirGaleria(this)">
+          <img src="Imagenes/consultoria/Diseno3.png" onclick="abrirGaleria(this)">
+          <img src="Imagenes/consultoria/Diseno4.png" onclick="abrirGaleria(this)">
+        </div>
       </div>
     </div>
 
@@ -574,30 +623,53 @@
 </footer>
 
 <script>
-function toggleServicio(elemento){
-  const servicios = document.querySelectorAll('.servicio');
+let galeriaActual = [];
+let indice = 0;
 
-  servicios.forEach(function(servicio){
-    if(servicio !== elemento){
-      servicio.classList.remove('activo');
-    }
-  });
+function abrirGaleria(img){
+  const contenedor = img.closest(".detalle");
+  const imgs = contenedor.querySelectorAll("img");
 
-  elemento.classList.toggle('activo');
+  galeriaActual = Array.from(imgs).map(i => i.src);
+  indice = Array.from(imgs).indexOf(img);
+
+  mostrarImagen();
+  document.getElementById("visor").style.display = "flex";
 }
 
-function abrirImagen(src){
-  document.getElementById('imagenGrande').src = src;
-  document.getElementById('visor').style.display = 'flex';
+function mostrarImagen(){
+  document.getElementById("imagenGrande").src = galeriaActual[indice];
+}
+
+function cambiarImagen(dir){
+  indice += dir;
+
+  if(indice < 0) indice = galeriaActual.length - 1;
+  if(indice >= galeriaActual.length) indice = 0;
+
+  mostrarImagen();
 }
 
 function cerrarImagen(){
-  document.getElementById('visor').style.display = 'none';
+  document.getElementById("visor").style.display = "none";
+}
+
+function toggleServicio(el){
+  document.querySelectorAll(".servicio").forEach(item => {
+    if(item !== el){
+      item.classList.remove("activo");
+    }
+  });
+
+  el.classList.toggle("activo");
 }
 </script>
 
-<div class="visor" id="visor" onclick="cerrarImagen()">
+<div class="visor" id="visor">
+  <span class="cerrar" onclick="cerrarImagen()">×</span>
   <img id="imagenGrande" src="">
+  <button class="prev" onclick="cambiarImagen(-1)">&#10094;</button>
+  <button class="next" onclick="cambiarImagen(1)">&#10095;</button>
 </div>
 
 </body>

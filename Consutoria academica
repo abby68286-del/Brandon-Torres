@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Consultoría Académica Élite - Brandon Torres</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background:#f4f8f2;
+      color:#1b4332;
+    }
+
+    section{
+      max-width:1200px;
+      margin:auto;
+      padding:60px 20px;
+    }
+
+    h2{
+      text-align:center;
+      font-size:32px;
+      margin-bottom:10px;
+    }
+
+    .sub{
+      text-align:center;
+      margin-bottom:40px;
+      color:#2d6a4f;
+      font-size:16px;
+    }
+
+    /* FILTROS */
+    .filtros{
+      text-align:center;
+      margin-bottom:30px;
+    }
+
+    .filtros button{
+      border:none;
+      background:#d8f3dc;
+      color:#1b4332;
+      padding:10px 16px;
+      margin:5px;
+      border-radius:20px;
+      cursor:pointer;
+      transition:0.3s;
+      font-weight:bold;
+    }
+
+    .filtros button:hover{
+      background:#2d6a4f;
+      color:white;
+    }
+
+    /* GRID */
+    .servicios{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:20px;
+    }
+
+    .servicio{
+      background:white;
+      border-radius:18px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.08);
+      padding:20px;
+      transition:0.3s;
+      cursor:pointer;
+      position:relative;
+    }
+
+    .servicio:hover{
+      transform:translateY(-6px);
+      box-shadow:0 14px 30px rgba(0,0,0,0.15);
+    }
+
+    .servicio h3{
+      margin:0;
+      color:#2d6a4f;
+    }
+
+    .tag{
+      font-size:12px;
+      background:#d8f3dc;
+      display:inline-block;
+      padding:4px 10px;
+      border-radius:12px;
+      margin-top:8px;
+    }
+
+    /* DETALLE */
+    .detalle{
+      max-height:0;
+      overflow:hidden;
+      opacity:0;
+      transition:0.4s ease;
+      margin-top:10px;
+    }
+
+    .servicio.activo .detalle{
+      max-height:700px;
+      opacity:1;
+      margin-top:15px;
+    }
+
+    /* GALERIA */
+    .galeria{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:10px;
+      margin-top:10px;
+    }
+
+    .galeria img{
+      width:100%;
+      height:120px;
+      object-fit:cover;
+      border-radius:10px;
+      transition:0.3s;
+      cursor:pointer;
+    }
+
+    .galeria img:hover{
+      transform:scale(1.05);
+    }
+
+    /* BOTON CONTACTO */
+    .btn{
+      display:inline-block;
+      margin-top:10px;
+      padding:10px 14px;
+      background:#25D366;
+      color:white;
+      border-radius:10px;
+      text-decoration:none;
+      font-size:14px;
+    }
+
+    /* VISOR */
+    .visor{
+      display:none;
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.92);
+      justify-content:center;
+      align-items:center;
+      z-index:9999;
+    }
+
+    .visor img{
+      max-width:85%;
+      max-height:85%;
+      border-radius:12px;
+    }
+
+    .cerrar{
+      position:absolute;
+      top:20px;
+      right:30px;
+      font-size:40px;
+      color:white;
+      cursor:pointer;
+    }
+
+    .prev,.next{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      font-size:30px;
+      color:white;
+      background:rgba(255,255,255,0.15);
+      border:none;
+      padding:10px 15px;
+      cursor:pointer;
+      border-radius:8px;
+    }
+
+    .prev{left:20px;}
+    .next{right:20px;}
+
+  </style>
+</head>
+<body>
+
+<section>
+
+  <h2>Consultoría Académica Élite</h2>
+  <div class="sub">Asesoría científica, análisis de datos y diseño de investigación de alto nivel</div>
+
+  <!-- FILTROS -->
+  <div class="filtros">
+    <button onclick="filtrar('todos')">Todos</button>
+    <button onclick="filtrar('tesis')">Tesis</button>
+    <button onclick="filtrar('datos')">Datos</button>
+    <button onclick="filtrar('redaccion')">Redacción</button>
+    <button onclick="filtrar('metodo')">Método</button>
+  </div>
+
+  <div class="servicios">
+
+    <div class="servicio" data-cat="tesis" onclick="toggleServicio(this)">
+      <h3>Asesoría de tesis</h3>
+      <span class="tag">Tesis</span>
+      <div class="detalle">
+        <p>Asesoría integral de trabajos de investigación.</p>
+        <div class="galeria">
+          <img src="Imagenes/consultoria/Tesista1.jpg" onclick="abrirGaleria(this)">
+          <img src="Imagenes/consultoria/Tesista2.jpg" onclick="abrirGaleria(this)">
+          <img src="Imagenes/consultoria/Tesista3.jpg" onclick="abrirGaleria(this)">
+          <img src="Imagenes/consultoria/Tesista4.jpg" onclick="abrirGaleria(this)">
+        </div>
+        <a class="btn" href="https://wa.me/51962959396" target="_blank">Contactar</a>
+      </div>
+    </div>
+
+    <div class="servicio" data-cat="datos" onclick="toggleServicio(this)">
+      <h3>Análisis de datos</h3>
+      <span class="tag">Datos</span>
+      <div class="detalle">
+        <p>Modelamiento estadístico ecológico.</p>
+        <div class="galeria">
+          <img src="Imagenes/consultoria/Analisis1.png" onclick="abrirGaleria(this)">
+          <img src="Imagenes/consultoria/Analisis2.jpg" onclick="abrirGaleria(this)">
+          <img src="Imagenes/consultoria/Analisis3.jpg" onclick="abrirGaleria(this)">
+          <img src="Imagenes/consultoria/Analisis4.jpg" onclick="abrirGaleria(this)">
+        </div>
+        <a class="btn" href="https://wa.me/51962959396" target="_blank">Contactar</a>
+      </div>
+    </div>
+
+    <div class="servicio" data-cat="redaccion" onclick="toggleServicio(this)">
+      <h3>Redacción científica</h3>
+      <span class="tag">Redacción</span>
+      <div class="detalle">
+        <p>Publicaciones científicas y tesis.</p>
+        <div class="galeria">
+          <img src="Imagenes/consultoria/Redaccion1.png" onclick="abrirGaleria(this)">
+        </div>
+        <a class="btn" href="https://wa.me/51962959396" target="_blank">Contactar</a>
+      </div>
+    </div>
+
+    <div class="servicio" data-cat="metodo" onclick="toggleServicio(this)">
+      <h3>Diseño metodológico</h3>
+      <span class="tag">Método</span>
+      <div class="detalle">
+        <p>Diseño experimental avanzado.</p>
+        <div class="galeria">
+          <img src="Imagenes/consultoria/Diseno1.png" onclick="abrirGaleria(this)">
+          <img src="Imagenes/consultoria/Diseno2.png" onclick="abrirGaleria(this)">
+          <img src="Imagenes/consultoria/Diseno3.png" onclick="abrirGaleria(this)">
+          <img src="Imagenes/consultoria/Diseno4.png" onclick="abrirGaleria(this)">
+        </div>
+        <a class="btn" href="https://wa.me/51962959396" target="_blank">Contactar</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- VISOR -->
+<div class="visor" id="visor">
+  <span class="cerrar" onclick="cerrarImagen()">×</span>
+  <button class="prev" onclick="cambiarImagen(-1)">&#10094;</button>
+  <img id="imagenGrande">
+  <button class="next" onclick="cambiarImagen(1)">&#10095;</button>
+</div>
+
+<script>
+let galeria=[];
+let indice=0;
+
+function toggleServicio(el){
+  el.classList.toggle("activo");
+}
+
+function filtrar(cat){
+  document.querySelectorAll(".servicio").forEach(s=>{
+    if(cat==='todos' || s.dataset.cat===cat){
+      s.style.display='block';
+    }else{
+      s.style.display='none';
+    }
+  });
+}
+
+function abrirGaleria(img){
+  const cont=img.closest(".detalle");
+  const imgs=cont.querySelectorAll("img");
+  galeria=Array.from(imgs).map(i=>i.src);
+  indice=[...imgs].indexOf(img);
+  mostrar();
+  document.getElementById("visor").style.display="flex";
+}
+
+function mostrar(){
+  document.getElementById("imagenGrande").src=galeria[indice];
+}
+
+function cambiarImagen(d){
+  indice+=d;
+  if(indice<0) indice=galeria.length-1;
+  if(indice>=galeria.length) indice=0;
+  mostrar();
+}
+
+function cerrarImagen(){
+  document.getElementById("visor").style.display="none";
+}
+</script>
+
+</body>
+</html>
