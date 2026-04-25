@@ -970,7 +970,7 @@
 
 <header class="hero fade-up">
   <div class="monograma">BT</div>
-  <img src="Imagenes/Perfil.png.png" alt="Brandon Torres" class="perfil fade-up delay-1">
+  <img src="Imagenes/Perfil.png" alt="Brandon Torres" class="perfil fade-up delay-1">
   <h1 class="fade-up delay-2">Brandon Torres</h1>
   <p class="fade-up delay-3">Ecólogo Tropical • Investigador • Docente • Escritor</p>
   <div class="insignia fade-up delay-4">Investigación científica aplicada en ecosistemas amazónicos</div>
@@ -989,7 +989,7 @@
   <h2>Sobre mí</h2>
   <div class="card">
     <p>
-       Soy ecólogo tropical, investigador y docente especializado en conservación de bosques tropicales y desarrollo sostenible.
+       Soy ecólogo tropical, investigador y docente especializado en conservación y manejo de bosques tropicales.
 
        Mi formación incluye estudios en Ecología de Bosques Tropicales, una Maestría en Gestión Ambiental y actualmente curso estudios doctorales en Ambiente y Desarrollo Sostenible.
 
@@ -1063,7 +1063,7 @@
     <div class="especialidad">
       <span class="linea">Línea de investigación</span>
       <h3>Docencia Universitaria</h3>
-      <p>Formación académica en biología, ecología forestal y estadística.</p>
+      <p>Formación académica en biología, ecología forestal, ecología de bosques inundables y no inundables, y estadística.</p>
     </div>
 
   </div>
@@ -1286,8 +1286,10 @@ document.addEventListener("mousemove", e => {
   hero.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
 });
 
-document.addEventListener("mouseleave", () => {
-  hero.style.transform = "rotateY(0deg) rotateX(0deg)";
+window.addEventListener("mouseout", (e) => {
+  if (!e.relatedTarget) {
+    hero.style.transform = "rotateY(0deg) rotateX(0deg)";
+  }
 });
 
 </script>
