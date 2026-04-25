@@ -7,85 +7,252 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
     body{
-      margin:0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom, #f4f8f2, #eef6f0);
-      color:#1b4332;
-    }
+     margin:0;
+     font-family: 'Segoe UI', Arial, sans-serif;
+     background:
+      radial-gradient(circle at top left, rgba(183,228,199,0.25), transparent 35%),
+      radial-gradient(circle at bottom right, rgba(149,213,178,0.18), transparent 30%),
+      linear-gradient(to bottom, #f7fbf8, #edf5ef);
+     color:#1b4332;
+     line-height:1.7;
+     position:relative;
+     overflow-x:hidden;
+     }
 
     .hero{
-     background: linear-gradient(rgba(27,67,50,0.85), rgba(45,106,79,0.85)),
-              url('https://images.unsplash.com/photo-1448375240586-882707db888b');
-     background-size: cover;
-     background-position: center;
+     background:
+      linear-gradient(rgba(27,67,50,0.82), rgba(45,106,79,0.82)),
+      url('https://images.unsplash.com/photo-1448375240586-882707db888b');
+     background-size:cover;
+     background-position:center;
+     background-attachment:fixed;
      color:white;
      text-align:center;
-     padding:80px 20px;
+     padding:120px 20px 100px;
+     position:relative;
+     overflow:hidden;
+     transform-style:preserve-3d;
+     transition:transform 0.25s ease;
+    }
+
+    .hero::after{
+     content:"";
+     position:absolute;
+     bottom:0;
+     left:0;
+     width:100%;
+     height:80px;
+     background:linear-gradient(to top, #f4f8f2, transparent);
     }
 
     .perfil{
-     width:180px;
-     height:180px;
+     width:190px;
+     height:190px;
      border-radius:50%;
      object-fit:cover;
-     border:5px solid white;
-     margin-bottom:20px;
-     box-shadow:0 8px 20px rgba(0,0,0,0.35);
+     border:6px solid rgba(255,255,255,0.9);
+     margin-bottom:25px;
+     box-shadow:
+     0 15px 35px rgba(0,0,0,0.35),
+     0 0 0 8px rgba(255,255,255,0.08);
+     position:relative;
+     transition:transform 0.4s ease;
+    }
+
+    .perfil:hover{
+     transform:scale(1.03);
+     box-shadow:
+      0 12px 35px rgba(0,0,0,0.4),
+      0 0 25px rgba(255,255,255,0.18);
+     filter:brightness(1.04);
     }
 
     .hero h1{
-     font-size:56px;
-     margin:10px 0;
-     text-shadow:2px 4px 8px rgba(0,0,0,0.45);
+     position:relative;
+     display:inline-block;
+     font-size:64px;
+     margin:12px 0 28px;
+     text-shadow:0 6px 18px rgba(0,0,0,0.45);
      letter-spacing:2px;
+     font-weight:700;
+    }
+
+    .hero h1::after{
+     content:"";
+     display:block;
+     width:220px;
+     height:2px;
+     margin:18px auto 0;
+     border-radius:4px;
+     background:linear-gradient(
+      90deg,
+      rgba(149,213,178,0.35) 0%,
+      rgba(255,255,255,0.95) 50%,
+      rgba(149,213,178,0.35) 100%
+     );
+     background-size:300% 100%;
+     animation:
+      lineaNombre 1.8s ease forwards,
+      brilloLinea 6s ease-in-out infinite;
     }
 
     .hero p{
      font-size:22px;
-     text-shadow:1px 2px 6px rgba(0,0,0,0.4);
+     max-width:800px;
+     margin:auto;
+     text-shadow:0 3px 8px rgba(0,0,0,0.35);
      font-weight:300;
+     letter-spacing:1px;
+     color:rgba(255,255,255,0.92);
+    }
+
+    .insignia{
+     display:inline-block;
+     margin-top:25px;
+     padding:12px 24px;
+     border-radius:30px;
+     background:rgba(255,255,255,0.12);
+     border:1px solid rgba(255,255,255,0.18);
+     backdrop-filter:blur(8px);
+     font-size:14px;
+     letter-spacing:1px;
+     color:white;
+    }
+
+    .monograma{
+     position:absolute;
+     top:30px;
+     left:40px;
+     width:72px;
+     height:72px;
+     border-radius:50%;
+     display:flex;
+     align-items:center;
+     justify-content:center;
+     font-size:26px;
+     font-weight:700;
+     letter-spacing:2px;
+     color:white;
+     background:rgba(255,255,255,0.08);
+     border:1px solid rgba(255,255,255,0.18);
+     backdrop-filter:blur(10px);
+     -webkit-backdrop-filter:blur(10px);
+     box-shadow:0 8px 24px rgba(0,0,0,0.25);
+     transition:all 0.35s ease;
+     animation: brilloBT 4s ease-in-out infinite;
+    }
+
+    .monograma:hover{
+     transform:scale(1.06);
+     background:rgba(255,255,255,0.14);
     }
 
     nav{
-     background:#1b4332;
+     background:rgba(27,67,50,0.92);
+     backdrop-filter:blur(14px);
+     -webkit-backdrop-filter:blur(14px);
      text-align:center;
-     padding:15px;
+     padding:18px 20px;
      position:sticky;
-     top:0;
+     top:15px;
      z-index:1000;
-     box-shadow:0 2px 8px rgba(0,0,0,0.2);
+     width:fit-content;
+     margin:0 auto;
+     border-radius:50px;
+     box-shadow:0 12px 28px rgba(0,0,0,0.18);
+     border:1px solid rgba(255,255,255,0.08);
     }
 
     nav a{
      color:white;
-     margin:15px;
+     margin:0 10px;
      text-decoration:none;
-     font-weight:bold;
-     transition:0.3s;
+     font-weight:600;
+     padding:10px 18px;
+     border-radius:30px;
+     transition:all 0.3s ease;
+     display:inline-block;
+     font-size:15px;
+     letter-spacing:0.3px;
     }
 
     nav a:hover{
-    color:#b7e4c7;
+     background:rgba(255,255,255,0.12);
+     color:#d8f3dc;
+     transform:translateY(-2px);
     }
 
     section{
-      max-width:1000px;
-      margin:auto;
-      padding:40px 20px;
+     max-width:1100px;
+     margin:auto;
+     padding:70px 25px;
+     position:relative;
+    }
+
+    section::before{
+     content:"";
+     position:absolute;
+     top:35px;
+     left:25px;
+     width:70px;
+     height:3px;
+     background:linear-gradient(to right,#2d6a4f,#95d5b2);
+     border-radius:10px;
+     opacity:0.9;
     }
 
     h2{
-      border-bottom:2px solid #2d6a4f;
-      padding-bottom:10px;
+     padding-bottom:12px;
+     margin-bottom:30px;
+     font-size:34px;
+     color:#1b4332;
+     font-weight:700;
+     letter-spacing:1px;
+     position:relative;
+     display:inline-block;
+     border:none;
+    }
+
+    h2::after{
+     content:"";
+     position:absolute;
+     left:0;
+     bottom:0;
+     width:100%;
+     height:3px;
+     background:linear-gradient(to right,#2d6a4f,#95d5b2);
+     border-radius:5px;
     }
 
     .card{
-      background:white;
-      padding:20px;
-      margin:20px 0;
-      border-radius:10px;
-      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+     background:linear-gradient(to bottom, #ffffff, #f8fcf9);
+     padding:40px;
+     margin:25px 0;
+     border-radius:24px;
+     box-shadow:0 18px 36px rgba(0,0,0,0.08);
+     border-left:6px solid #2d6a4f;
+     position:relative;
     }
+
+    .card p{
+     font-size:18px;
+     line-height:1.9;
+     color:#355244;
+     text-align:justify;
+     margin:0;
+    }
+
+    .firma-academica{
+     margin-top:28px;
+     padding-top:20px;
+     border-top:1px solid rgba(45,106,79,0.15);
+     font-style:italic;
+     font-size:15px;
+     color:#2d6a4f;
+     text-align:right;
+     letter-spacing:0.5px;
+    }
+
     .libros-grid{
      display:grid;
      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
@@ -93,15 +260,18 @@
     }
 
     .libro{
-     background:white;
-     border-radius:15px;
+     background:linear-gradient(to bottom, #ffffff, #f8fcf9);
+     border-radius:22px;
      overflow:hidden;
-     box-shadow:0 4px 12px rgba(0,0,0,0.15);
-     transition:transform 0.3s;
+     box-shadow:0 16px 32px rgba(0,0,0,0.08);
+     transition:all 0.35s ease;
+     border:1px solid rgba(45,106,79,0.08);
+     position:relative;
     }
 
     .libro:hover{
-     transform:translateY(-8px);
+     transform:translateY(-12px);
+     box-shadow:0 24px 45px rgba(0,0,0,0.12);
     }
 
     .libro:hover img{
@@ -110,13 +280,13 @@
  
     .libro img{
      width:100%;
-     height:320px;
+     height:340px;
      object-fit:cover;
-     transition:0.4s;
+     transition:transform 0.5s ease;
     }
 
     .libro-contenido{
-     padding:22px;
+     padding:28px 24px;
      text-align:center;
     }
 
@@ -125,95 +295,211 @@
     }
     
     .libro h3{
-     color:#2d6a4f;
-     margin-bottom:12px;
+     color:#1b4332;
+     margin-bottom:14px;
+     font-size:24px;
+     font-weight:700;
+    }
+
+    .libro p{
+     font-size:16px;
+     line-height:1.7;
+     color:#4f6b5d;
+     min-height:90px;
     }
 
     .especialidades{
      display:grid;
-     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-     gap:20px;
+     grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+     gap:28px;
+     margin-top:25px;
     }
 
     .especialidad{
-     background:white;
-     padding:25px;
-     border-radius:15px;
-     text-align:center;
-     box-shadow:0 4px 12px rgba(0,0,0,0.12);
-     transition:0.3s;
+     background:linear-gradient(to bottom, #ffffff, #f8fcf9);
+     padding:30px 25px;
+     border-radius:24px;
+     text-align:left;
+     box-shadow:0 14px 30px rgba(0,0,0,0.08);
+     transition:all 0.35s ease;
+     border-top:5px solid #2d6a4f;
+     position:relative;
+     overflow:hidden;
     }
 
     .especialidad:hover{
-     transform:translateY(-8px);
-   }
+     transform:translateY(-10px);
+     box-shadow:0 22px 40px rgba(0,0,0,0.12);
+    }
 
     .especialidad h3{
-     margin-bottom:10px;
-     color:#2d6a4f;
+     margin-bottom:14px;
+     color:#1b4332;
+     font-size:22px;
+     font-weight:700;
+    }
+
+    .especialidad p{
+     color:#4f6b5d;
+     line-height:1.7;
+     font-size:16px;
+     margin:0;
+    }
+
+    .linea{
+     display:inline-block;
+     margin-bottom:14px;
+     font-size:12px;
+     text-transform:uppercase;
+     letter-spacing:1px;
+     color:#40916c;
+     font-weight:700;
     }
 
     .contacto-box{
-     background:white;
-     padding:30px;
-     border-radius:15px;
-     box-shadow:0 4px 12px rgba(0,0,0,0.12);
-     text-align:center;
+     display:grid;
+     grid-template-columns:1.2fr 1fr;
+     gap:40px;
+     align-items:center;
+     background:linear-gradient(to bottom, #ffffff, #f7fbf8);
+     padding:50px 40px;
+     border-radius:28px;
+     box-shadow:0 20px 45px rgba(0,0,0,0.08);
+     border:1px solid rgba(45,106,79,0.08);
+     position:relative;
+     overflow:hidden;
+    }
+
+    .contacto-box::before{
+     content:"";
+     position:absolute;
+     top:0;
+     left:0;
+     width:100%;
+     height:6px;
+     background:linear-gradient(to right,#2d6a4f,#95d5b2);
     }
 
     .contacto-box a{
      color:#2d6a4f;
      text-decoration:none;
-     font-weight:bold;
+     font-weight:600;
+     transition:0.3s;
+    }
+
+    .contacto-box a:hover{
+     color:#1b4332;
     }
 
     .contacto-box p{
-     margin:12px 0;
-     font-size:18px;
+     margin:14px 0;
+     font-size:17px;
+     color:#3d5a4a;
+     line-height:1.7;
+    }
+
+    .contacto-info{
+     text-align:left;
+    }
+
+    .contacto-info p{
+     margin:14px 0;
+     font-size:17px;
+     color:#3d5a4a;
+    }
+
+    .contacto-lateral{
+     text-align:center;
+     padding-left:25px;
+     border-left:1px solid rgba(45,106,79,0.12);
+    }
+
+    .contacto-titulo{
+     font-size:20px;
+     font-weight:700;
+     color:#1b4332;
+     margin-bottom:20px;
+    }
+
+    .disponibilidad{
+     display:inline-block;
+     margin-bottom:25px;
+     padding:10px 20px;
+     border-radius:30px;
+     background:rgba(45,106,79,0.08);
+     color:#2d6a4f;
+     font-size:14px;
+     font-weight:600;
     }
 
     .estado{
      display:inline-block;
-     margin-top:15px;
-     padding:8px 14px;
-     background:#d8f3dc;
-     color:#1b4332;
-     border-radius:20px;
-     font-weight:bold;
-     font-size:14px;
+     margin-top:18px;
+     padding:10px 18px;
+     background:linear-gradient(to right, #2d6a4f, #40916c);
+     color:white;
+     border-radius:30px;
+     font-weight:600;
+     font-size:13px;
+     letter-spacing:0.5px;
+     box-shadow:0 8px 20px rgba(45,106,79,0.25);
     }
 
     .noticias{
      display:grid;
-     gap:25px;
+     gap:28px;
+     margin-top:25px;
     }
 
     .noticia{
-     background:white;
-     padding:25px;
+     background:linear-gradient(to bottom, #ffffff, #f8fcf9);
+     padding:30px;
+     border-radius:24px;
+     box-shadow:0 16px 34px rgba(0,0,0,0.08);
      border-left:6px solid #2d6a4f;
-     border-radius:12px;
-     box-shadow:0 4px 10px rgba(0,0,0,0.08);
-     transition:0.3s;
+     transition:all 0.35s ease;
+     position:relative;
     }
 
     .noticia:hover{
-     transform:translateY(-6px);
-     box-shadow:0 10px 22px rgba(0,0,0,0.14);
+     transform:translateY(-10px);
+     box-shadow:0 24px 42px rgba(0,0,0,0.12);
     }
 
     .noticia h3{
-     margin-top:0;
-     color:#2d6a4f;
-     font-size:24px;
+     margin-top:8px;
+     color:#1b4332;
+     font-size:26px;
+     font-weight:700;
+     line-height:1.3;
+    }
+
+    .noticia p{
+     font-size:17px;
+     line-height:1.8;
+     color:#4f6b5d;
+     margin-bottom:0;
     }
 
     .fecha{
-     font-size:13px;
-     color:#888;
+     font-size:12px;
+     color:#40916c;
      text-transform:uppercase;
+     letter-spacing:2px;
+     font-weight:700;
+    }
+
+    .tipo-publicacion{
+     display:inline-block;
+     background:#d8f3dc;
+     color:#1b4332;
+     padding:8px 14px;
+     border-radius:20px;
+     font-size:12px;
+     font-weight:700;
      letter-spacing:1px;
-     margin-bottom:12px;
+     margin-bottom:14px;
+     text-transform:uppercase;
     }
 
     .redes a i{
@@ -223,18 +509,19 @@
     .redes a{
      display:inline-block;
      margin:10px;
-     padding:12px 20px;
+     padding:14px 24px;
      color:white;
      text-decoration:none;
-     border-radius:10px;
-     font-weight:bold;
-     font-size:16px;
-     transition:0.3s;
+     border-radius:14px;
+     font-weight:600;
+     font-size:15px;
+     transition:all 0.3s ease;
+     box-shadow:0 8px 18px rgba(0,0,0,0.08);
     }
 
     .redes a:hover{
-     transform:translateY(-5px);
-     box-shadow:0 8px 18px rgba(0,0,0,0.25);
+     transform:translateY(-6px);
+     box-shadow:0 14px 24px rgba(0,0,0,0.18);
     }
 
     .redes .whatsapp{
@@ -254,14 +541,46 @@
     }
 
     .servicio{
-     background:white;
-     padding:25px;
-     border-radius:15px;
+     background:linear-gradient(to bottom, #ffffff, #f8fcf9);
+     padding:30px 25px;
+     border-radius:20px;
      text-align:center;
-     box-shadow:0 4px 12px rgba(0,0,0,0.1);
-     cursor: pointer;
+     box-shadow:0 12px 30px rgba(0,0,0,0.08);
+     border:1px solid rgba(45,106,79,0.08);
+     cursor:pointer;
+     transition:all 0.35s ease;
+     position:relative;
+     overflow:hidden;
+    }
+
+    .servicio::before{
+     content:"";
+     position:absolute;
+     top:0;
+     left:0;
+     width:100%;
+     height:5px;
+     background:linear-gradient(to right,#2d6a4f,#95d5b2);
+    }
+
+    .servicio:hover{
+     transform:translateY(-10px);
+     box-shadow:0 18px 38px rgba(0,0,0,0.12);
     }
     
+    .servicio h3{
+     font-size:22px;
+     color:#1b4332;
+     margin-bottom:15px;
+     font-weight:700;
+    }
+
+    .servicio p{
+     font-size:15px;
+     color:#4f6f5f;
+     line-height:1.7;
+    }
+
     .detalle img{
      width:100%;
      margin-top:15px;
@@ -277,9 +596,16 @@
 
     .galeria img{
      width:100%;
-     border-radius:12px;
+     border-radius:14px;
      object-fit:cover;
-    }  
+     transition:transform 0.35s ease, box-shadow 0.35s ease;
+     box-shadow:0 6px 16px rgba(0,0,0,0.08);
+    }
+
+    .galeria img:hover{
+     transform:scale(1.03);
+     box-shadow:0 12px 24px rgba(0,0,0,0.15);
+    }
 
     .detalle{
      max-height: 0;
@@ -289,8 +615,9 @@
     }
 
     .servicio.activo .detalle{
-     max-height: 800px;
-     opacity: 1;
+     max-height:1000px;
+     opacity:1;
+     margin-top:20px;
     }
 
     .servicios{
@@ -300,35 +627,74 @@
     }
 
     .formulario{
-     background:white;
-     padding:30px;
-     border-radius:15px;
-     box-shadow:0 4px 12px rgba(0,0,0,0.12);
-     margin-top:30px;
+     background:linear-gradient(to bottom, #ffffff, #f7fbf8);
+     padding:40px;
+     border-radius:24px;
+     box-shadow:0 18px 40px rgba(0,0,0,0.08);
+     border:1px solid rgba(45,106,79,0.08);
+     margin-top:40px;
+     position:relative;
+     overflow:hidden;
+    }
+
+    .formulario::before{
+     content:"";
+     position:absolute;
+     top:0;
+     left:0;
+     width:100%;
+     height:6px;
+     background:linear-gradient(to right,#2d6a4f,#95d5b2);
+    }
+
+    .formulario h3{
+     font-size:28px;
+     color:#1b4332;
+     margin-bottom:25px;
+     text-align:center;
+     font-weight:700;
     }
 
     .formulario input,
     .formulario textarea{
      width:100%;
-     padding:12px;
-     margin:10px 0;
-     border:1px solid #ccc;
-     border-radius:8px;
+     padding:16px 18px;
+     margin:12px 0;
+     border:1px solid #d8e2dc;
+     border-radius:14px;
      font-size:16px;
+     background:#fbfdfb;
+     color:#1b4332;
+     box-sizing:border-box;
+     transition:all 0.3s ease;
+     outline:none;
+    }
+
+    .formulario input:focus,
+    .formulario textarea:focus{
+     border-color:#2d6a4f;
+     box-shadow:0 0 0 4px rgba(45,106,79,0.08);
+     background:white;
     }
 
     .formulario button{
-     background:#2d6a4f;
+     background:linear-gradient(to right,#1b4332,#2d6a4f);
      color:white;
      border:none;
-     padding:12px 24px;
-     border-radius:8px;
+     padding:16px 30px;
+     border-radius:14px;
      font-size:16px;
+     font-weight:600;
      cursor:pointer;
+     width:100%;
+     margin-top:10px;
+     transition:all 0.3s ease;
+     letter-spacing:0.5px;
     }
 
    .formulario button:hover{
-     background:#1b4332;
+     transform:translateY(-3px);
+     box-shadow:0 12px 22px rgba(27,67,50,0.25);
     }
 
     .visor{
@@ -398,26 +764,216 @@
      cursor:pointer;
     }
 
+    #preloader{
+     position:fixed;
+     inset:0;
+     background:linear-gradient(135deg,#1b4332,#2d6a4f);
+     display:flex;
+     justify-content:center;
+     align-items:center;
+     flex-direction:column;
+     z-index:99999;
+     transition:opacity 0.8s ease, visibility 0.8s ease;
+    }
+
+    #preloader.ocultar{
+     opacity:0;
+     visibility:hidden;
+    }
+
+    .loader-circulo{
+     width:70px;
+     height:70px;
+     border:4px solid rgba(255,255,255,0.25);
+     border-top:4px solid #ffffff;
+     border-radius:50%;
+     animation:girar 1.2s linear infinite;
+     margin-bottom:20px;
+    }
+
+    .loader-texto{
+     color:white;
+     font-size:15px;
+     letter-spacing:3px;
+     text-transform:uppercase;
+     font-weight:600;
+    }
+
+    @keyframes girar{
+     from{transform:rotate(0deg);}
+     to{transform:rotate(360deg);}
+    }
+
+    @keyframes lineaNombre{
+     from{
+     width:0;
+     opacity:0;
+    }
+
+     to{
+     width:220px;
+     opacity:1;
+    }
+    }
+
+    @keyframes brilloLinea{
+     0%{
+     background-position:0% 50%;
+    }
+
+     50%{
+     background-position:100% 50%;
+    }
+
+     100%{
+     background-position:0% 50%;
+    }
+    }
+
     footer{
-     background:#1b4332;
+     background:linear-gradient(to right, #163828, #1b4332, #24513d);
      color:white;
      text-align:center;
-     padding:35px 20px;
-     margin-top:40px;
+     padding:50px 20px 35px;
+     margin-top:70px;
+     position:relative;
+     overflow:hidden;
+    }
+
+    @keyframes brilloBT{
+     0%,100%{
+     box-shadow:
+      0 8px 24px rgba(0,0,0,0.25),
+      0 0 0 rgba(255,255,255,0);
+     transform:scale(1);
+    }
+
+     50%{
+     box-shadow:
+      0 10px 28px rgba(0,0,0,0.28),
+      0 0 18px rgba(255,255,255,0.18);
+     transform:scale(1.02);
+    }
+    
     }
 
     footer p{
      margin:8px 0;
      font-size:15px;
+     letter-spacing:0.5px;
+     opacity:0.95;
     }
+
+    footer::before{
+     content:"";
+     position:absolute;
+     top:0;
+     left:50%;
+     transform:translateX(-50%);
+     width:140px;
+     height:3px;
+     background:#95d5b2;
+     border-radius:20px;
+    }
+
+    .footer-nombre{
+     font-size:22px;
+     font-weight:700;
+     letter-spacing:2px;
+     margin-bottom:14px;
+     color:#d8f3dc;
+     text-transform:uppercase;
+    }
+
+    .footer-frase{
+     font-style:italic;
+     font-size:14px;
+     color:#b7e4c7;
+     margin-top:14px;
+    }
+
+    @media (max-width:768px){
+    nav{
+     width:90%;
+     border-radius:20px;
+     top:10px;
+     padding:14px 10px;
+    }
+
+    nav a{
+     margin:5px;
+     padding:8px 12px;
+     font-size:14px;
+    }
+
+    .contacto-box{
+     grid-template-columns:1fr;
+     text-align:center;
+    }
+
+    .contacto-info{
+     text-align:center;
+    }
+
+    .contacto-lateral{
+     border-left:none;
+     border-top:1px solid rgba(45,106,79,0.12);
+     padding-left:0;
+     padding-top:25px;
+    }
+    }
+
+    .fade-up{
+     opacity:0;
+     transform:translateY(40px);
+     transition:all 1s ease;
+    }
+
+    .fade-up.visible{
+     opacity:1;
+     transform:translateY(0);
+    }
+
+    .delay-1{ transition-delay:0.2s; }
+    .delay-2{ transition-delay:0.4s; }
+    .delay-3{ transition-delay:0.6s; }
+    .delay-4{ transition-delay:0.8s; }
+
+    @keyframes fadeUp{
+     to{
+     opacity:1;
+     transform:translateY(0);
+    }
+    }
+
+    .cursor-glow{
+     position:fixed;
+     width:180px;
+     height:180px;
+     border-radius:50%;
+     pointer-events:none;
+     background:radial-gradient(circle, rgba(149,213,178,0.18) 0%, rgba(149,213,178,0) 70%);
+     transform:translate(-50%, -50%);
+     z-index:0;
+     transition:transform 0.08s linear;
+    }
+
   </style>
 </head>
 <body>
+  <div id="preloader">
+  <div class="loader-circulo"></div>
+  <div class="loader-texto">Cargando sitio</div>
+</div>
 
-<header class="hero">
-  <img src="Imagenes/Perfil.png.png" alt="Brandon Torres" class="perfil">
-  <h1>Brandon Torres</h1>
-  <p>Ecólogo Tropical • Investigador • Docente • Escritor</p>
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<header class="hero fade-up">
+  <div class="monograma">BT</div>
+  <img src="Imagenes/Perfil.png.png" alt="Brandon Torres" class="perfil fade-up delay-1">
+  <h1 class="fade-up delay-2">Brandon Torres</h1>
+  <p class="fade-up delay-3">Ecólogo Tropical • Investigador • Docente • Escritor</p>
+  <div class="insignia fade-up delay-4">Investigación científica aplicada en ecosistemas amazónicos</div>
 </header>
 
 <nav>
@@ -429,7 +985,7 @@
   <a href="#consultoria">Consultoría</a>
 </nav>
 
-<section id="sobre">
+<section id="sobre" class="fade-up">
   <h2>Sobre mí</h2>
   <div class="card">
     <p>
@@ -438,11 +994,15 @@
        Mi formación incluye estudios en Ecología de Bosques Tropicales, una Maestría en Gestión Ambiental y actualmente curso estudios doctorales en Ambiente y Desarrollo Sostenible.
 
        Actualmente soy docente e investigador en la Facultad de Ciencias Forestales de la UNAP.
+  </p>
+  <div class="firma-academica">
+    Investigación científica orientada a la conservación de ecosistemas tropicales.
+  </div>
   </div>
 
 </section>
 
-<section id="libros">
+<section id="libros" class="fade-up">
   <h2>Libros</h2>
 
   <div class="libros-grid">
@@ -477,27 +1037,31 @@
   </div>
 </section>
 
-<section id="investigacion">
+<section id="investigacion" class="fade-up">
   <h2>Investigación y Docencia</h2>
 
   <div class="especialidades">
 
     <div class="especialidad">
+      <span class="linea">Línea de investigación</span>
       <h3>Ecología Tropical</h3>
       <p>Estudio de ecosistemas amazónicos inundables y no inundables.</p>
     </div>
 
     <div class="especialidad">
+      <span class="linea">Línea de investigación</span>
       <h3>Gestión Ambiental</h3>
       <p>Diseño de estrategias sostenibles para conservación de recursos.</p>
     </div>
 
     <div class="especialidad">
+      <span class="linea">Línea de investigación</span>
       <h3>Estadística Aplicada</h3>
       <p>Análisis cuantitativo para investigación ecológica avanzada.</p>
     </div>
 
     <div class="especialidad">
+      <span class="linea">Línea de investigación</span>
       <h3>Docencia Universitaria</h3>
       <p>Formación académica en biología, ecología forestal y estadística.</p>
     </div>
@@ -505,10 +1069,11 @@
   </div>
 </section>
 
-<section id="noticias">
+<section id="noticias" class="fade-up">
   <h2>Noticias y Reflexiones Ambientales</h2>
   <div class="noticias">
     <div class="noticia">
+    <span class="tipo-publicacion">Reflexión científica</span>
     <div class="fecha">Abril 2026</div>
     <h3>Importancia de los bosques inundables amazónicos</h3>
     <p>
@@ -518,6 +1083,7 @@
   </div>
 
     <div class="noticia">
+    <span class="tipo-publicacion">Reflexión científica</span>
     <div class="fecha">Abril 2026</div>
     <h3>La estadística en la investigación ecológica moderna</h3>
     <p>
@@ -528,7 +1094,7 @@
   </div>
 </section>
  
-<section id="consultoria">
+<section id="consultoria" class="fade-up">
   <h2>Consultoría Académica</h2>
 
   <div class="servicios">
@@ -583,7 +1149,7 @@
   </div>
 
   <div class="formulario">
-    <h3>Solicite información</h3>
+    <h3>Solicite una consulta académica</h3>
     <form action="https://formspree.io/f/xkokyrge" method="POST">
       <input type="hidden" name="_next" value="https://abby68286-del.github.io/Brandon-Torres/gracias.html">
       <input type="text" name="nombre" placeholder="Nombre completo" required>
@@ -594,34 +1160,49 @@
   </div>
 </section>
 
-<section id="contacto">
-  <h2>Contacto</h2>
+<section id="contacto" class="fade-up">
+  <h2>Contacto Institucional</h2>
 
   <div class="contacto-box">
-  <p><strong>Email:</strong> <a href="mailto:jtorres@unapiquitos.edu.pe">jtorres@unapiquitos.edu.pe</a></p>
-  <p><strong>Institución:</strong> Universidad Nacional de la Amazonía Peruana</p>
-   <p><strong>Facultad:</strong> Ciencias Forestales</p>
-  <p><strong>Departamento:</strong> Ecología y Conservación</p>
 
-  <div class="redes">
-  <a href="https://wa.me/+51962959396" target="_blank" class="whatsapp">
-  <i class="fab fa-whatsapp"></i> WhatsApp</a>
+    <div class="contacto-info">
+      <p><strong>Email:</strong> <a href="mailto:jtorres@unapiquitos.edu.pe">jtorres@unapiquitos.edu.pe</a></p>
+      <p><strong>Institución:</strong> Universidad Nacional de la Amazonía Peruana</p>
+      <p><strong>Facultad:</strong> Ciencias Forestales</p>
+      <p><strong>Departamento:</strong> Ecología y Conservación</p>
+      <p><strong>Ubicación académica:</strong> Iquitos, Perú</p>
+    </div>
 
-  <a href="https://facebook.com/brandon.torres.576401" target="_blank" class="facebook">
-  <i class="fab fa-facebook"></i> Facebook</a>
+    <div class="contacto-lateral">
+      <div class="disponibilidad">Consultas nacionales e internacionales</div>
+      <div class="contacto-titulo">Canales profesionales</div>
 
-  <a href="https://youtube.com/@brandontorres691" target="_blank" class="youtube">
-  <i class="fab fa-youtube"></i> YouTube</a>
-   
-  <a href="https://linkedin.com/in/brandon-torres-b8348017b" target="_blank" class="linkedin">
-  <i class="fab fa-linkedin"></i> LinkedIn</a>
+      <div class="redes">
+        <a href="https://wa.me/+51962959396" target="_blank" class="whatsapp">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+
+        <a href="https://facebook.com/brandon.torres.576401" target="_blank" class="facebook">
+          <i class="fab fa-facebook"></i> Facebook
+        </a>
+
+        <a href="https://youtube.com/@brandontorres691" target="_blank" class="youtube">
+          <i class="fab fa-youtube"></i> YouTube
+        </a>
+
+        <a href="https://linkedin.com/in/brandon-torres-b8348017b" target="_blank" class="linkedin">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+      </div>
+    </div>
+
   </div>
-</div>
 </section>
 
-<footer>
-  <p><strong>Brandon Torres</strong></p>
+<footer class="fade-up">
+  <p class="footer-nombre">Brandon Torres</p>
   <p>Ecología Tropical • Investigación • Docencia • Conservación</p>
+  <p class="footer-frase">Comprometido con la ciencia y la conservación de los ecosistemas tropicales.</p>
   <p>© 2026 Todos los derechos reservados</p>
 </footer>
 
@@ -666,6 +1247,49 @@ function toggleServicio(el){
 
   el.classList.toggle("activo");
 }
+
+const observer = new IntersectionObserver(entries => {
+ entries.forEach(entry => {
+  if(entry.isIntersecting){
+   entry.target.classList.add("visible");
+  }
+ });
+}, {
+ threshold: 0.15
+});
+
+document.querySelectorAll(".fade-up").forEach(el => {
+ observer.observe(el);
+});
+
+const glow = document.getElementById("cursorGlow");
+
+document.addEventListener("mousemove", e => {
+ glow.style.left = e.clientX + "px";
+ glow.style.top = e.clientY + "px";
+});
+
+window.addEventListener("load", function(){
+ const preloader = document.getElementById("preloader");
+
+ setTimeout(() => {
+   preloader.classList.add("ocultar");
+ }, 1200);
+});
+
+const hero = document.querySelector(".hero");
+
+document.addEventListener("mousemove", e => {
+  const x = (window.innerWidth / 2 - e.clientX) / 70;
+  const y = (window.innerHeight / 2 - e.clientY) / 70;
+
+  hero.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
+});
+
+document.addEventListener("mouseleave", () => {
+  hero.style.transform = "rotateY(0deg) rotateX(0deg)";
+});
+
 </script>
 
 <div class="visor" id="visor">
