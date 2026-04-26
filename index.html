@@ -344,6 +344,8 @@
      line-height:1.7;
      font-size:16px;
      margin:0;
+     text-align:justify;
+     hyphens:auto;
     }
 
     .linea{
@@ -908,54 +910,53 @@
  opacity:0.9;
 }
 
-/* MODAL STORY */
-.story-modal{
- display:none;
- position:fixed;
- inset:0;
- background:rgba(0,0,0,0.95);
- justify-content:center;
- align-items:center;
- z-index:9999;
- flex-direction:column;
-}
+    .story-modal{
+     display:none;
+     position:fixed;
+     inset:0;
+     background:rgba(0,0,0,0.95);
+     justify-content:center;
+     align-items:center;
+     z-index:9999;
+     flex-direction:column;
+    }
 
-.story-modal img{
- max-width:85%;
- max-height:80%;
- border-radius:14px;
- animation:fadeIn 0.4s ease;
-}
+    .story-modal img{
+     max-width:85%;
+     max-height:80%;
+     border-radius:14px;
+     animation:fadeIn 0.4s ease;
+    }
 
-.story-caption{
- color:white;
- margin-top:20px;
- font-size:16px;
- opacity:0.85;
- text-align:center;
- max-width:700px;
-}
+    .story-caption{
+     color:white;
+     margin-top:20px;
+     font-size:16px;
+     opacity:0.85;
+     text-align:center;
+     max-width:700px;
+    }
 
-.story-prev, .story-next{
- position:absolute;
- top:50%;
- transform:translateY(-50%);
- background:rgba(255,255,255,0.12);
- border:none;
- color:white;
- font-size:28px;
- padding:12px 16px;
- border-radius:10px;
- cursor:pointer;
- transition:0.3s;
-}
+    .story-prev, .story-next{
+     position:absolute;
+     top:50%;
+     transform:translateY(-50%);
+     background:rgba(255,255,255,0.12);
+     border:none;
+     color:white;
+     font-size:28px;
+     padding:12px 16px;
+     border-radius:10px;
+     cursor:pointer;
+     transition:0.3s;
+    }
 
-.story-prev:hover, .story-next:hover{
- background:rgba(255,255,255,0.25);
-}
+    .story-prev:hover, .story-next:hover{
+     background:rgba(255,255,255,0.25);
+    }
 
-.story-prev{ left:20px; }
-.story-next{ right:20px; }
+     .story-prev{ left:20px; }
+     .story-next{ right:20px; }
 
     footer p{
      margin:8px 0;
@@ -1058,6 +1059,17 @@
      transition:transform 0.08s linear;
     }
 
+    html {
+     scroll-behavior: smooth;
+    }
+
+    .descripcion-servicio{
+     font-size:15px;
+     color:#4f6b5d;
+     margin-top:8px;
+     line-height:1.6;
+    }
+    
   </style>
 </head>
 <body>
@@ -1080,9 +1092,10 @@
   <a href="#sobre">Sobre mí</a>
   <a href="#libros">Libros</a>
   <a href="#investigacion">Investigación</a>
+  <a href="#trayectoria">Trayectoria en campo</a>
   <a href="#noticias">Noticias</a>
-  <a href="#contacto">Contacto</a>
   <a href="#consultoria">Consultoría</a>
+  <a href="#contacto">Contacto</a>
 </nav>
 
 <section id="sobre" class="fade-up">
@@ -1119,7 +1132,7 @@
     <div class="libro">
       <img src="Imagenes/Manual.jpg" alt="Manual">
       <div class="libro-contenido">
-        <h3>Manual de remediación</h3>
+        <h3>Manual de remedición</h3>
         <p>Procedimientos técnicos para parcelas permanentes de muestreo en proceso de obtención de ISBN.</p>
         <span class="estado">Próximamente en Amazon</span>
       </div>
@@ -1219,8 +1232,10 @@
 
     <div class="servicio" onclick="toggleServicio(this)">
       <h3>Asesoría de tesis</h3>
-      <div class="detalle">
-        <p>Orientación metodológica para tesis de pregrado, maestría y doctorado.</p>
+       <p class="descripcion-servicio">
+        Orientación metodológica para tesis de pregrado y maestría.</p>
+        
+        <div class="detalle">
         <div class="galeria">
           <img src="Imagenes/Consultoria/Tesista1.jpg" onclick="abrirGaleria(this)">
           <img src="Imagenes/Consultoria/Tesista2.jpg" onclick="abrirGaleria(this)">
@@ -1232,8 +1247,10 @@
 
     <div class="servicio" onclick="toggleServicio(this)">
       <h3>Análisis de datos</h3>
+      <p class="descripcion-servicio">
+      Procesamiento estadístico de datos ecológicos.</p>
+      
       <div class="detalle">
-        <p>Procesamiento estadístico de datos ecológicos.</p>
         <div class="galeria">
           <img src="Imagenes/Consultoria/Analisis1.jpg" onclick="abrirGaleria(this)">
           <img src="Imagenes/Consultoria/Analisis2.jpg" onclick="abrirGaleria(this)">
@@ -1245,16 +1262,20 @@
 
     <div class="servicio" onclick="toggleServicio(this)">
       <h3>Redacción científica</h3>
+      <p class="descripcion-servicio">
+      Corrección y estructuración científica.</p>
+
       <div class="detalle">
-        <p>Corrección y estructuración científica.</p>
         <img src="Imagenes/Consultoria/Redaccion1.png" onclick="abrirGaleria(this)">
       </div>
     </div>
 
     <div class="servicio" onclick="toggleServicio(this)">
       <h3>Diseño metodológico</h3>
+      <p class="descripcion-servicio">
+      Desarrollo de diseños experimentales robustos.</p>
+
       <div class="detalle">
-        <p>Diseños experimentales sólidos.</p>
         <div class="galeria">
           <img src="Imagenes/Consultoria/Diseno1.png" onclick="abrirGaleria(this)">
           <img src="Imagenes/Consultoria/Diseno2.png" onclick="abrirGaleria(this)">
@@ -1407,17 +1428,25 @@ window.addEventListener("load", function(){
 
 const hero = document.querySelector(".hero");
 
+let scrolling = false;
+
+window.addEventListener("scroll", () => {
+  scrolling = true;
+
+  clearTimeout(window.scrollEndTimer);
+
+  window.scrollEndTimer = setTimeout(() => {
+    scrolling = false;
+  }, 150);
+});
+
 document.addEventListener("mousemove", e => {
+  if (scrolling) return;
+
   const x = (window.innerWidth / 2 - e.clientX) / 70;
   const y = (window.innerHeight / 2 - e.clientY) / 70;
 
   hero.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
-});
-
-window.addEventListener("mouseout", (e) => {
-  if (!e.relatedTarget) {
-    hero.style.transform = "rotateY(0deg) rotateX(0deg)";
-  }
 });
 
 let storyImages = [
@@ -1437,7 +1466,7 @@ let storyImages = [
  "Imagenes/Trayectoria/Campo14.jpg",
  "Imagenes/Trayectoria/Campo15.jpg",
  "Imagenes/Trayectoria/Campo16.jpg",
- "Imagenes/Trayectoria/Campo17.jpg",
+ "Imagenes/Trayectoria/Campo17.JPG",
  "Imagenes/Trayectoria/Campo18.jpg",
  "Imagenes/Trayectoria/Campo19.jpg",
  "Imagenes/Trayectoria/Campo20.JPG",
